@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 
 from word import Word
+from options import Options
 
 class Game:
     """Class that contains information of the different games that have
     been played."""
 
-    def __init__(self, difficultyChosen, player):
+    def __init__(self):
         #We initialize the attributes of Game class
-        self.player = player
+        self.player = ""
         self.win = False
         self.endGame = False
-        self._wordChosen = Word(difficultyChosen)
-        self.errorAllowed = 6                  
+        self._wordChosen = ""
+        self.errorAllowed = 6
+        self._options = Options()
 
 # -----------------------------------------------------------------------
 #                           GETTERS AND SETTERS
@@ -24,9 +26,18 @@ class Game:
 
     def _set_word_chosen(self, wordChosen):
         """Setters for the word that has been chosen randomly"""
-        self._wordChosen._set_random_word(wordChosen)
+        self._wordChosen = wordChosen
 
+    def _get_options(self):
+        """Getters for the options of the game """
+        return self._options
 
+    def _set_options(self, options):
+        """Setters for the options of the game """
+        self._options = options
+        
+
+    options = property(_get_options, _set_options)
     wordChosen = property(_get_word_chosen, _set_word_chosen)
 
 # -----------------------------------------------------------------------
@@ -92,8 +103,34 @@ class Game:
         else:
             self.win = True
             self.endGame = True
-    
-        return self.endGame
-        
 
+    def replay(self, optionSelected):
+        """Select the right action depending on what the player has selected
+        in the replay options at the endgame"""
+
+        if optionSelected == "1":
+            self._get_options()._set_pseudo_options(False)
+            self._get_options()._set_difficulty_options(False)
+            self._get_options()._set_play_again(True)
+
+        elif optionSelected == "2":
+            self._get_options()._set_pseudo_options(True)
+            self._get_options()._set_difficulty_options(True)
+            self._get_options()._set_play_again(True)
+
+        elif optionSelected == "3":
+            self._get_options()._set_pseudo_options(False)
+            self._get_options()._set_difficulty_options(True)
+            self._get_options()._set_play_again(True)
+
+        else:
+            self._get_options()._set_play_again(False)
+
+    def resetGame(self):
+        """Reset the attributes of the game """
+        self.win = False
+        self.endGame = False
+        self.errorAllowed = 6
+            
+        
         
