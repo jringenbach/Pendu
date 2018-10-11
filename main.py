@@ -1,6 +1,5 @@
 # -*- coding : utf-8 -*-
 
-import random
 from player import Player
 from game import Game
 from displayMenu import DisplayMenu
@@ -17,4 +16,10 @@ while keepPlaying == True:
     difficultyList = ["Facile", "Normal", "Difficile"]
     difficultyAsking = "Choisissez votre niveau de difficulté : "
     difficultyMenu = DisplayMenu(difficultyList, difficultyAsking)
-    difficultyMenu.display()
+    difficultyChosen = difficultyMenu.display()
+
+    #We create the current game
+    game = Game(difficultyChosen)
+    game.selectRandomWord()
+
+
