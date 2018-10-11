@@ -27,7 +27,9 @@ while keepPlaying == True:
 
     #While the game is not over, the player keeps playing (chosing a letter)
     while endGame == False:
-        game.play()
+        endGame = game.play()
+
+    game.endGameMessage()
 
 
 

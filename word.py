@@ -83,10 +83,15 @@ class Word:
     def checkLetterInWord(self, letterChosen):
         """We check if the letter chosen by the player is in the word """
         i = -1
+        letterFound = False
+        
         for letter in self._get_random_word():
             i = i + 1
             if letterChosen.upper() == letter.upper():
                 self._set_letter_discovered(False, i)
+                letterFound = True
+
+        return letterFound
 
     def displayWord(self):
         """Display the word with the letters discovered and not discovered.
