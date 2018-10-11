@@ -23,7 +23,6 @@ while keepPlaying == True:
     #We create the current game
     game = Game(difficultyChosen, player)
     game._get_word_chosen().selectRandomWord()
-    print(game._get_word_chosen()._get_random_word())
 
     #While the game is not over, the player keeps playing (chosing a letter)
     while endGame == False:
