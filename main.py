@@ -20,6 +20,7 @@ while keepPlaying == True:
 
     #We create the current game
     game = Game(difficultyChosen)
-    game.selectRandomWord()
+    game._get_word_chosen().selectRandomWord()
+
 
 
