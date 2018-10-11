@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import re
+import os
 
 class Player:
     """Information about the players """
@@ -33,17 +34,17 @@ class Player:
         #The pseudo must not contain numbers or special characters
         while wrongPseudo == True:
             wrongPseudo = False
-            pseudoSelected = input("Choisissez un pseudonyme : ")
+            os.system("cls")
+            print("Veuillez choisir un pseudonyme sans chiffres ni caractères spéciaux.")
+            pseudoSelected = input("Pseudonyme : ")
 
             #We check if there is a special character in the pseudo
             if re.search(r"\W", pseudoSelected) is not None:
                 wrongPseudo = True
-                print("WrongPseudo : "+str(wrongPseudo))
                 
             #We check if there is a number in the pseudo
             if re.search(r"\d", pseudoSelected) is not None:
                 wrongPseudo = True
-                print("WrongPseudo : "+str(wrongPseudo))
 
         self._set_pseudo(pseudoSelected)
 
