@@ -11,8 +11,8 @@ while keepPlaying == True:
     endGame = False
     
     #The player chose his/her pseudonyme
-    pseudoPlayer = input("Choisissez un pseudonyme : ")
-    player = Player(pseudoPlayer)
+    player = Player()
+    player.pseudoSelection()
 
     #The player chose the difficulty of the game
     difficultyList = ["Facile", "Normal", "Difficile"]
