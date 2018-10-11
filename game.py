@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class Game:
     """Class that contains information of the different games that have
     been played."""
