@@ -20,6 +20,11 @@ class Game:
         """Setters for the word that has been chosen randomly"""
         self._wordChosen._set_random_word(wordChosen)
 
+    def play(self):
+        """function where the game is happening """
+        self._get_word_chosen().displayWord()
+        pass
+
 
     wordChosen = property(_get_word_chosen, _set_word_chosen)
 

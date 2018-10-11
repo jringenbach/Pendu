@@ -21,6 +21,8 @@ while keepPlaying == True:
     #We create the current game
     game = Game(difficultyChosen)
     game._get_word_chosen().selectRandomWord()
+    print(game._get_word_chosen()._get_random_word())
+    game.play()
 
 
 
