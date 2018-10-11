@@ -1,18 +1,28 @@
 # -*- coding : utf-8 -*-
 
+# -----------------------------------------------------------------------
+#                       MAIN FILE CONTAINING THE GAME
+# -----------------------------------------------------------------------
+
+from displayMenu import DisplayMenu
+from game import Game
 from options import Options
 from player import Player
-from game import Game
 from word import Word
-from displayMenu import DisplayMenu
+
 import os
 
-""" Main file containing the game """
+# -----------------------------------------------------------------------
+#                       VARIABLES AND OBJECTS
+# -----------------------------------------------------------------------
 game = Game()
 options = Options()
 game._set_options(options)
 player = Player()
 
+# -----------------------------------------------------------------------
+#                       CORE OF THE GAME
+# -----------------------------------------------------------------------
 
 while game._get_options()._get_play_again() == True:
     endGame = False
