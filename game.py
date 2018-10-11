@@ -6,9 +6,9 @@ class Game:
     """Class that contains information of the different games that have
     been played."""
 
-    def __init__(self, difficultyChosen):
+    def __init__(self, difficultyChosen, player):
         #We initialize the attributes of Game class
-        
+        self.player = player
         self._wordChosen = Word(difficultyChosen)
         self.errorAllowed = 6                  
 
@@ -22,8 +22,10 @@ class Game:
 
     def play(self):
         """function where the game is happening """
+        
         self._get_word_chosen().displayWord()
-        pass
+        letterChosen = self.player.choseALetter()
+        self._get_word_chosen().checkLetterInWord(letterChosen)
 
 
     wordChosen = property(_get_word_chosen, _set_word_chosen)

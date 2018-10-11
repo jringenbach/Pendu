@@ -33,17 +33,28 @@ class Word:
 
     def _set_random_word(self, wordChosen):
         """Setters for the word"""
+        initializationLetterDiscovered = True
         self._randomWord = wordChosen
-        self._set_letter_discovered(len(wordChosen))
+        self._set_letter_discovered(initializationLetterDiscovered, -1)
 
     def _get_letter_discovered(self):
         """ Getters for the list of letters that have been discovered"""
         return self._letterDiscovered
 
-    def _set_letter_discovered(self, wordLength):
+    def _set_letter_discovered(self, initialization, index):
         """We create a list that indicates which letter has been discovered
             At the beginning, none of them has been."""
-        self._letterDiscovered = [False] * wordLength
+
+        #We initialize a list that has the same length as the word
+        #Each letter that hasn't been discovered is set to false in the list
+        if initialization == True:
+            wordLength = len(self._get_random_word())
+            self._letterDiscovered = [False] * wordLength
+
+        #We set to true the index in the list where the letter has been
+        #discovered
+        else:
+            self._letterDiscovered[index] = True
 
     def _get_difficulty(self):
         """ Getters for the difficulty"""
@@ -69,6 +80,14 @@ class Word:
 #                                  FUNCTIONS
 # -----------------------------------------------------------------------
 
+    def checkLetterInWord(self, letterChosen):
+        """We check if the letter chosen by the player is in the word """
+        i = -1
+        for letter in self._get_random_word():
+            i = i + 1
+            if letterChosen.upper() == letter.upper():
+                self._set_letter_discovered(False, i)
+
     def displayWord(self):
         """Display the word with the letters discovered and not discovered.
         Letters not discovered are displayed with a _"""
@@ -79,7 +98,7 @@ class Word:
                 print("_ ", end="")
 
             else:
-                print(self._get_random_word()[i])
+                print(self._get_random_word()[i], end="")
 
         print("\n")
 

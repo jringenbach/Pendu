@@ -8,6 +8,8 @@ from displayMenu import DisplayMenu
 keepPlaying = True
 
 while keepPlaying == True:
+    endGame = False
+    
     #The player chose his/her pseudonyme
     pseudoPlayer = input("Choisissez un pseudonyme : ")
     player = Player(pseudoPlayer)
@@ -19,10 +21,13 @@ while keepPlaying == True:
     difficultyChosen = difficultyMenu.display()
 
     #We create the current game
-    game = Game(difficultyChosen)
+    game = Game(difficultyChosen, player)
     game._get_word_chosen().selectRandomWord()
     print(game._get_word_chosen()._get_random_word())
-    game.play()
+
+    #While the game is not over, the player keeps playing (chosing a letter)
+    while endGame == False:
+        game.play()
 
 
 
