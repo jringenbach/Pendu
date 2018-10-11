@@ -3,6 +3,7 @@
 from player import Player
 from game import Game
 from displayMenu import DisplayMenu
+import os
 
 """ Main file containing the game """
 keepPlaying = True
@@ -29,6 +30,7 @@ while keepPlaying == True:
         endGame = game.play()
 
     game.endGameMessage()
+    os.system("pause")
 
 
 
